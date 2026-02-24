@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Get In Touch | EVENTORA STUDIO</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<style>
+		body{
+			background:
+            linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+            url("servies-bg.jpg");
+            background-size: cover;
+            background-position: center;
+		}
+	</style>
+</head>
+<body>
+	<section class="contact-section">
+	<h2>GET IN TOUCH</h2>
+	<p>Let’s plan your event.<br> Reach out for bookings or enquiries.</p>
+	<div class="contact-grid"></div>
+	<div class="contact-info">
+		<p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+		<p><i class="fa-solid fa-envelope"></i> eventorastudio@email.com</p>
+	    <p><i class="fa-solid fa-location-dot"></i> Kerala, India</p>
+	</div>
+	<div class="contact-form">
+		<h3>SEND US A MESSAGE</h3>
+		<form id="eventform">
+
+			<div class="field">
+				<label for="name">Full Name</label>
+			    <input type="text" name="name" id="name" placeholder="Full Name" required>
+			    <small id="nameError" class="error"></small>
+			</div>
+
+			<div class="field">
+				<label for="number">Phone Number</label>
+			    <input type="tel" name="phone" id="phone" placeholder="Phone Number" required>
+			    <small id="phoneError" class="error"></small>
+			</div>
+			
+            <div class="field">
+            	<label for="email">Email Address</label>
+			    <input type="email" name="email" id="email" placeholder="Email Address" required>
+			    <small id="emailError" class="error"></small>
+            </div>
+		
+            <div class="field">
+            	<label for="event">Event Type:</label>
+			    <select id="event" name="event-type" required>
+				    <option value="">Select Event Type </option/>
+				    <option>Wedding </option>
+				    <option>Birthday Party </option>
+				    <option>Engagement/Anniversary </option>
+				    <option>Baby Shower </option>
+				    <option>House Warming </option>
+				    <option>Private Party </option>
+			    </select>
+			    <small id="eventError" class="error"></small>
+            </div>
+
+            <div class="field">
+            	<label for="event-date">Event Date</label>
+			    <input type="date" name="event-date" id="event-date">
+			    <small id="dateError" class="error"></small>
+            </div>
+			
+            <div class="field"> 
+            	<label for="message">Message/Requirements</label>
+			    <textarea id="message" name="message" placeholder="Tell us about your event, theme ideas, or budget range."></textarea>
+			    <small id="messageError" class="error"></small>
+		    </div>
+			
+ 
+			<p>
+				<button type="submit" class="contact-btn">Send Enquiry</button>
+			</p>
+			
+		</form>
+
+    <p id="result"></p>
+
+		<p class="note">We’ll get back to you with availability, ideas, and pricing details.</p>
+	</div>
+	</div>
+	<a class="back-btn" href="index.html">Back</a>
+	</section>
+
+	<script>
+		const form = document.getElementById("eventform");
+
+        const nameInput = document.getElementById("name");
+        const phoneInput = document.getElementById("phone");
+        const emailInput = document.getElementById("email");
+        const eventInput = document.getElementById("event");
+        const dateInput = document.getElementById("event-date");
+        const messageInput = document.getElementById("message");
+
+        const result = document.getElementById("result");
+
+        const nameError = document.getElementById("nameError");
+        const phoneError = document.getElementById("phoneError");
+        const emailError = document.getElementById("emailError");
+        const eventError = document.getElementById("eventError");
+        const dateError = document.getElementById("dateError");
+        const messageError = document.getElementById("messageError");
+
+
+
+        //Resuable Error Functions
+        function showError(element,message) {
+	         element.textContent = message;
+        }
+
+        function clearError(element){
+	         element.textContent ="";
+        }
+
+
+        //Name Validation
+        function validateName(){
+	       const value = nameInput.value.trim();
+	       const pattern = /^[A-Za-z\s]+$/;
+
+	       if (!pattern.test(value)) {
+		        showError(nameError, "Only letters and spaces allowed.");
+		        return false;
+	        }
+
+	        clearError(nameError);
+	        return true;
+        }
+
+
+        //Phone Validation
+        function validatePhone(){
+	        const value = phoneInput.value.trim();
+	        const pattern = /^[6-9]\d{9}$/;
+
+	        if (!pattern.test(value)) {
+		        showError(phoneError,"Enter valid 10-digit phone number.");
+		        return false;
+	        }
+
+	        clearError(phoneError);
+	        return true;
+        }
+
+
+
+        //Email Validation
+        function validateEmail(){
+	        const value = emailInput.value.trim();
+	        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+	        if (!pattern.test(value)) {
+		         showError(emailError, "Enter valid email.");
+		         return false;
+	        }
+
+	        clearError(emailError);
+	        return true;
+        }
+
+
+
+        //Event Type(select) Validation
+        function validateEvent() {
+	    const value = eventInput.value;
+
+	        if (value === "") {
+		       showError(eventError,"Please select event type.");
+		       return false;
+	        }
+
+	        clearError(eventError);
+	        return true;
+        }
+
+
+
+        //Date Validation
+        function validateDate(){
+	        const value = dateInput.value;
+
+	        if (value ==="") {
+		        showError(dateError, "Please select a date.");
+		        return false;
+	        }
+
+	        clearError(dateError);
+	        return true;
+        }
+
+
+
+        //Message Validation
+        function validateMessage() {
+	        const value = messageInput.value.trim();
+
+
+	        if (value.length < 10) {
+		         showError(messageError, "Message must be  at least 10 characters.");
+		         return false;
+	        } 
+	        clearError(messageError);
+	         return true;
+        }
+
+
+
+        //Master Validation
+        function validateForm(){
+
+          const isNameValid = validateName();
+          const isPhoneValid = validatePhone();
+          const isEmailValid = validateEmail();
+          const isEventValid = validateEvent();
+          const isDateValid = validateDate();
+          const isMessageValid = validateMessage();
+
+          return (
+            isNameValid &&
+            isPhoneValid &&
+            isEmailValid &&
+            isEventValid &&
+            isDateValid &&
+            isMessageValid
+          );
+        }
+
+
+
+        //Submit Event
+        form.addEventListener("submit", function(e){
+	        e.preventDefault();
+
+	        const isValid = validateForm();
+
+            if (isValid) {
+               result.textContent = "Form submitted successfully!";
+               result.style.color = "green";
+
+               form.reset();
+
+               clearError(nameError);
+               clearError(phoneError);
+               clearError(emailError);
+               clearError(eventError);
+               clearError(dateError);
+               clearError(messageError);
+            } else {
+              result.textContent = "Please fix the errors.";
+              result.style.color = "red";
+            }  
+        });
+
+	</script>
+</body>
+</html>
