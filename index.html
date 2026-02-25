@@ -12,38 +12,71 @@
 
 </head>
 <body>
-	<div class="img">
-		<nav class="header navbar navbar-expand-lg fixed-top shadow">
-		   <div class="logo container-fluid">
-			   <a href="index.html"><img src="logo.jpg" style="width: 50px; height: auto;"></a>
-			   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
- 			      <span class="navbar-toggler-icon"></span>
- 		       </button>
- 		       <div class=" nav-links collapse navbar-collapse" id="collapsibleNavbar">
- 			      <ul class="navbar-nav ms-auto">
- 				    <li class="nav-item">
- 					    <a class="nav-link" href="#about">About</a>
- 				    </li>
- 				    <li class="nav-item">
- 					    <a class="nav-link" href="#events">Events</a>
- 				    </li>
- 				    <li class="nav-item">
- 					    <a class="nav-link" href="#services">Services</a>
- 				    </li>
- 				    <li class="nav-item">
- 					    <a class="nav-link" href="#portfolio">Portfolio</a>
- 				    </li>
- 				    <li class="nav-item">
- 					    <a class="nav-link" href="contact.html">Contact</a>
- 				    </li>
- 			      </ul>
- 		        </div>
-		    </div>
-	    </nav>
-	    <div class="text">
-		     <p>We design, plan, and manage events end-to-end <br> from concept to execution.</p>
-		</div>
-	</div>
+	<div class="hero-section">
+      <nav class="header navbar navbar-expand-lg fixed-top shadow">
+       <div class="logo container-fluid">
+         <a href="index.html"><img src="logo.jpg" style="width: 50px; height: auto;"></a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class=" nav-links collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#events">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            </ul>
+            </div>
+        </div>
+      </nav>
+      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+  
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img src="header1.jpg" class="d-block w-100 carousel-img" alt="Slide 1">
+            <div class="carousel-caption">
+              <p>We design, plan, and manage events end-to-end from concept to execution.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="header2.jpg" class="d-block w-100 carousel-img" alt="Slide 2">
+            <div class="carousel-caption">
+              <p>Creating unforgettable experiences with style and precision.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="header3.jpg" class="d-block w-100 carousel-img" alt="Slide 3">
+            <div class="carousel-caption">
+              <p>From weddings to corporate events — we handle it all.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+
+      </div>
+    </div>
 	<hr>
 	<div class="main">
 		<h5>ABOUT US</h5>
@@ -261,6 +294,7 @@
 </body>
 
 </html>
+
 
 
 
